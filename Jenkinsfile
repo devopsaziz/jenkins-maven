@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Compile and Clean') { 
             steps {
+
                 sh "mvn clean compile"
             }
         }
@@ -14,11 +15,11 @@ pipeline {
         stage('Deploy') { 
             steps {
                 sh "mvn package"
+              }
             }
-          stage('Archiving') { 
-            steps {
+            stage('Archiving') { 
+               steps {
                 archiveArtifacts '**/target/*.jar'
-                  }
             }   
         }
     }
